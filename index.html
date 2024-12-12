@@ -40,8 +40,8 @@
         const key2Value = getQueryParam('key2');
 
         // Display the extracted values on the page
-        document.getElementById('key1').textContent = key1Value || '未提供';
-        document.getElementById('key2').textContent = key2Value || '未提供';
+        document.getElementById('key1').textContent = key1 || '未提供';
+        document.getElementById('key2').textContent = key2 || '未提供';
     </script>
 
     <!-- Add the JavaScript tag as part of Assessment 2 -->
@@ -55,18 +55,30 @@
             f.src=a;
             g.parentNode.insertBefore(f,g);
         })('https://utt.impactcdn.com/A2788006-de3d-4011-a57c-c4737e79de0365535.js','script','ire',document,window);
-        ire('identify', {
-            customerid: key1Value,  // Pass key1 value here
-            customeremail: key2Value // Pass key2 value here
-        });
-        var checkImpactLoaded = setInterval(function() {
-        if (typeof ire !== 'undefined') {
-            clearInterval(checkImpactLoaded);
-            console.log('Impact 脚本已加载');
-            // 在这里执行其他操作，例如发送消息
-            alert('Impact 脚本执行成功！');
-        }
-    }, 100); 
+
+        console.log('Sending data to Impact:', {
+            customerid: key1Value,
+            customeremail: key2Value
+            });
+        if (typeof ire !== 'undefined' && key1Value && key2Value) {
+            ire('identify', {
+            customerid: key1Value,
+            customeremail: key2Value
+            });
+            console.log('Data sent to Impact successfully');
+            } else {
+                console.log('Error: key1 or key2 is missing or invalid');
+                }
+    //     var checkImpactLoaded = setInterval(function() {
+    //     if (typeof ire !== 'undefined') {
+    //         clearInterval(checkImpactLoaded);
+    //         console.log('Impact 脚本已加载');
+    //         // 在这里执行其他操作，例如发送消息
+    //         alert('Impact 脚本执行成功！');
+    //     }
+    // }, 100); 
+    
+    
     </script>
 </body>
 </html>
