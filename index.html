@@ -57,13 +57,13 @@
         })('https://utt.impactcdn.com/A2788006-de3d-4011-a57c-c4737e79de0365535.js','script','ire',document,window);
 
         console.log('Sending data to Impact:', {
-            customerid: key1Value,
-            customeremail: key2Value
+            customerid: key1,
+            customeremail: key2
             });
-        if (typeof ire !== 'undefined' && key1Value && key2Value) {
+        if (typeof ire !== 'undefined' && key1 && key2) {
             ire('identify', {
-            customerid: key1Value,
-            customeremail: key2Value
+            customerid: key1,
+            customeremail: key2
             });
             console.log('Data sent to Impact successfully');
             } else {
