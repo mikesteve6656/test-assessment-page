@@ -59,6 +59,14 @@
             customerid: key1Value,  // Pass key1 value here
             customeremail: key2Value // Pass key2 value here
         });
+        var checkImpactLoaded = setInterval(function() {
+        if (typeof ire !== 'undefined') {
+            clearInterval(checkImpactLoaded);
+            console.log('Impact 脚本已加载');
+            // 在这里执行其他操作，例如发送消息
+            alert('Impact 脚本执行成功！');
+        }
+    }, 100); 
     </script>
 </body>
 </html>
